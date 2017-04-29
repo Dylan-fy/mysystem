@@ -58,7 +58,6 @@
 
                                             <th width="20%">用户名</th>
                                             <th width="15%">性别</th>
-                                            <th width="10%">用户类型</th>
                                             <th width="15%">创建时间</th>
                                             <th width="15%">管理操作</th>
 
@@ -70,8 +69,8 @@
                                         <tr>
                                             <td>{{ user.username }}</td>
                                             <td>{{ user.sex}}</td>
-                                            <td>{{ user.is_manager }}</td>
                                             <td>{{ user.created_at }}</td>
+
                                             <td>
                                             <a class="btn" href="#" title="修改"><i class="icon-inbox"></i></a>
                                             <a class="btn btn-primary" href="user_delete/{{ user.id }}" title="删除"><i class="icon-trash"></i></a>
@@ -79,6 +78,14 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
+                                    <form action="{% url 'user_management' %}" accept-charset="utf-8">
+                                        <input name="username" type="text" id="username">
+                                        <button type="submit">确认</button>
+                                        <form action="/update_user/{{user.id}}/" method="post" accept-charset="utf-8">
+                                              <input name="password" type="password" id="password" ></input>
+                                               <button type="submit">更新</button>
+                                            </form>
+                                    </form>
 
 
 

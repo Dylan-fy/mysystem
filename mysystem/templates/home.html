@@ -34,9 +34,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'host_management' %}">主机管理<span class="sr-only">(current)</span></a></li>
-        <li><a href="{% url 'user_management' %}">用户管理</a></li>
-        <li><a href="{% url 'add' %}">快速新增</a></li>
+        <li><a href="{% url 'home' %}">首页</a></li>
+        <li><a href="{% url 'host_management' %}">我的主机<span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'user_management' %}">我的个人信息</a></li>
       </ul>
 {#      <form class="navbar-form navbar-left">#}
 {#        <div class="form-group">#}
@@ -45,12 +45,9 @@
 {#        <button type="submit" class="btn btn-default">快速查找</button>#}
 {#      </form>#}
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人账户中心<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">退出登录<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'success' %}">个人中心</a></li>
-            <li role="separator" class="divider"></li>
             <li><a href="{% url 'logout' %}">退出登录</a></li>
           </ul>
         </li>
@@ -59,7 +56,51 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <h1>哈喽</h1>
+    <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="../static/img/home1.png" alt="...">
+      <div class="caption">
+        <h3>windows7</h3>
+        <p>Windows 7 的设计主要围绕五个重点——针对笔记本电脑的特有设计；基于应用服务的设计；用户的个性化；视听娱乐的优化；用户易用性的新引擎。 跳跃列表，系统故障快速修复等，这些新功能令Windows 7成为最易用的Windows。</p>
+      </div>
+    </div>
+  </div>
+
+          <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="../static/img/vb.png" alt="...">
+      <div class="caption">
+        <h3>virtualBox</h3>
+        <p>VirtualBox 是一款开源虚拟机软件。VirtualBox 是由德国 Innotek 公司开发，在 Sun 被 Oracle 收购后正式更名成 Oracle VM VirtualBox。Innotek 以 GNU General Public License (GPL) 释出 VirtualBox，并提供二进制版本及 OSE 版本的代码。</p>
+      </div>
+    </div>
+  </div>
+
+          <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="../static/img/py.png" alt="...">
+      <div class="caption">
+        <h3>PyCharm</h3>
+        <p>PyCharm是一种Python IDE，带有一整套可以帮助用户在使用Python语言开发时提高其效率的工具，比如调试、语法高亮、Project管理、代码跳转、单元测试、版本控制。此外，该IDE提供了一些高级功能，以用于支持Django框架下的专业Web开发。</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+    <div class="jumbotron" style="padding: 0px 15px 0px 15px; margin-bottom: 0px;">
+{#  <h2>电子科技大学成都学院</h2>#}
+{#   <h3>云计算科学与技术系</h3>#}
+  <p style="margin-top: 0px;">网站信息：</p>
+      <p style="font-size: 12px;">开发框架：Django</p>
+              <p style="font-size: 12px;">设计模式：基于Django的MVC设计模式</p>
+                      <p style="font-size: 12px;">开发系统：Windows 10</p>
+              <p style="font-size: 12px;">当前版本：mysystem 1.0</p>
+
+</div>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -9,7 +9,6 @@ class User(models.Model):
     )
     username = models.CharField(max_length=100, verbose_name= '用户名')
     password = models.CharField(max_length=200,verbose_name= '密码')
-    is_manager = models.BooleanField(default=False, verbose_name='是否是管理员')
     sex = models.CharField(choices=SEX_CHOICES,max_length=4,verbose_name='性别')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
 
