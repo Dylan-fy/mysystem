@@ -19,15 +19,18 @@ urlpatterns = patterns('',
     url(r'^add/$', 'mainframe.views.add', name="add"),
     url(r'^success/$', 'mainframe.views.success', name="success"),
     url(r'^acc_login/$', 'mainframe.views.acc_login', name="acc_login"),
-    url(r'logout/$', 'mainframe.views.logout', name="logout"),
-    url(r'new/$', 'mainframe.views.new', name="new"),
-    url(r'mainframe_one/$', 'mainframe.views.mainframe_one', name="mainframe_one"),
+    url(r'^logout/$', 'mainframe.views.logout', name="logout"),
+    url(r'^new/$', 'mainframe.views.new', name="new"),
+    url(r'^mainframe_one/$', 'mainframe.views.mainframe_one', name="mainframe_one"),
     url(r'chakan/$','mainframe.views.chakan',name="chakan"),
     url(r'kelong/$', 'mainframe.views.kelong', name="kelong"),
-    url(r'user_list/$', 'mainframe.views.user_list', name="user_list"),
-    url(r'user_delete/(\d+)/$', views.user_delete),
-    url(r'cp_delete/(\d+)/$', views.cp_delete),
-    url(r'user_ls/(\d+)/$', views.user_ls),
+    url(r'^user_list/$', 'mainframe.views.user_list', name="user_list"),
+    url(r'^user_delete/(\d+)/$', views.user_delete),
+    url(r'^cp_delete/(\d+)/$', views.cp_delete),
+    url(r'^user_ls/(\d+)/$', views.user_ls),
+    url(r'^update_user/(\d+)/$', views.update_user),
+    # url(r'^computer/(\d+)$', 'mainframe.views.computer', name="computer")
+
 
 )
 

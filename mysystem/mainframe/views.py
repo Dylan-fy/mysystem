@@ -20,13 +20,24 @@ def login(req):
 def registration(req):
     return render_to_response("registration.html")
 
-def host_management(req):
+def host_management(request):
     computer_list = Computer.objects.all()
-    return render(req,'host_management.html',{'computer_list':computer_list})
+    return render(request,'host_management.html',{'computer_list':computer_list})
+    # username = request.COOKIES.get('username', '')
+    # if username:
+    #     user = Computer.objects.all().get(user=username)
+    #     return render(request, "host_management.html", {'Computer': user})
+    # else:
+    #     return render_to_response("login.html", {'error': '请先登录！'})
 
 def user_management(request):
     user_list = User.objects.all()
     return render(request, 'user_management.html', {'user_list': user_list})
+
+def update_user(request,user_id):
+    user = request.POST.get('User')
+    User.objects.filter(id=user_id).update(user=user)
+    return HttpResponseRedirect('/')
 
 def personal_center(req):
     return render_to_response("personal_center.html")
@@ -89,7 +100,7 @@ def logout(request):
 def chakan(request):
     vm_num = os.popen('VBoxManage list vms')
     return HttpResponse('查看当前虚拟机有{}'.format(vm_num))
-
+#
 def close_user_Computer(request):
     os.system('关掉xx的用户的虚拟机')
     Computer.state = '已关机'
@@ -108,17 +119,6 @@ def create_cp(request):
     memory = request.POST.get('password')
     repassword = request.POST.get('repassword')
 
-def user(request):
-
-    user_obj = User.objects.all()
-    user_obj2 = User.objects.filter(b__caption='运维').values('username','password')
-    for i in user_obj2:
-        print(i['username'],i['password'])
-
-    user_obj3 = User.objects.filter(b__caption='运维').values_list('username', 'password')
-
-    return render(request,'success.html',{'user_obj':user_obj,'user_obj2':user_obj2,'user_obj3':user_obj3})
-
 def user_delete(request,user_id):
     User.objects.all().filter(id=user_id).delete()
     return HttpResponse("删除成功！")
@@ -133,6 +133,15 @@ def user_list(req):
 def user_ls(request,user_id):
     user_l = User.objects.all().get(id=user_id)
     return render(request, 'user_list.html', {'user_l': user_l})
+
+# def computer(request):
+#     username = request.COOKIES.get('username','')
+#     if username:
+#         user = Computer.objects.all().get(user = username)
+#         return  render(request,"host_management.html",{'Computer':user})
+#     else:
+#         return render_to_response("login.html",{'error':'请先登录！'})
+
 
 
 
