@@ -9,7 +9,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','mainframe.views.login',name ="login"),
-    url(r'^login$','mainframe.views.login',name ="login"),
     url(r'^home/$','mainframe.views.home',name ="home"),
     url(r'^registration/$','mainframe.views.registration',name ="registration"),
     url(r'^host_management/$','mainframe.views.host_management',name ="host_management"),
@@ -28,7 +27,8 @@ urlpatterns = patterns('',
     url(r'^user_delete/(\d+)/$', views.user_delete),
     url(r'^cp_delete/(\d+)/$', views.cp_delete),
     url(r'^user_ls/(\d+)/$', views.user_ls),
-    url(r'^update_user/(\d+)/$', views.update_user),
+    # url(r'^update_computer/(\d+)/$', views.update_computer),
+    url(r'cp_update/$','mainframe.views.cp_update',name="cp_update"),
     # url(r'^computer/(\d+)$', 'mainframe.views.computer', name="computer")
 
 

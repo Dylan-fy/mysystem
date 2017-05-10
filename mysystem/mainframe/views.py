@@ -20,24 +20,32 @@ def login(req):
 def registration(req):
     return render_to_response("registration.html")
 
+def cp_update(req):
+    return render_to_response("cp_update.html")
+
 def host_management(request):
-    computer_list = Computer.objects.all()
-    return render(request,'host_management.html',{'computer_list':computer_list})
-    # username = request.COOKIES.get('username', '')
-    # if username:
-    #     user = Computer.objects.all().get(user=username)
-    #     return render(request, "host_management.html", {'Computer': user})
+    username = request.COOKIES.get('username', '')
+    user = User.objects.get(username=username)
+    computer = Computer.objects.filter(user=user)
+    # state = Computer.objects.get(computer).state
+    # if state:
+    #     Computer.objects.filter(computer=computer).update(state=True)
     # else:
-    #     return render_to_response("login.html", {'error': '请先登录！'})
+    #     Computer.objects.filter(computer=computer).update(state=False)
+    return render(request,'host_management.html',{'computer':computer})
 
 def user_management(request):
-    user_list = User.objects.all()
-    return render(request, 'user_management.html', {'user_list': user_list})
+    username = request.COOKIES.get('username', '')
+    user = User.objects.filter(username = username)
+    return render(request, 'user_management.html', {'user': user})
 
-def update_user(request,user_id):
-    user = request.POST.get('User')
-    User.objects.filter(id=user_id).update(user=user)
-    return HttpResponseRedirect('/')
+def update_computer(request,computer_id):
+    state = Computer.objects.get(id = computer_id).state
+    if state:
+        Computer.objects.filter(id = computer_id).update(state=True)
+    else:
+        Computer.objects.filter(id = computer_id).update(state=False)
+    return render(request,'host_management.html',{'computer_id':computer_id})
 
 def personal_center(req):
     return render_to_response("personal_center.html")
@@ -83,9 +91,9 @@ def acc_login(requset):
     if User.objects.all().filter(username=username):
         user= User.objects.all().get(username=username)
         if password==user.password:
-            response = HttpResponseRedirect('/')
+            response = HttpResponseRedirect('/home/')
             response.set_cookie('username', username, 3600)
-            return render_to_response('home.html')
+            return response
         else:
             return render_to_response('login.html', {'error': '密码错误！'})
 
@@ -120,11 +128,11 @@ def create_cp(request):
     repassword = request.POST.get('repassword')
 
 def user_delete(request,user_id):
-    User.objects.all().filter(id=user_id).delete()
+    User.objects.filter(id=user_id).delete()
     return HttpResponse("删除成功！")
 
 def cp_delete(request,cp_id):
-    Computer.objects.all().filter(id=cp_id).delete()
+    Computer.objects.filter(id=cp_id).delete()
     return HttpResponse("删除成功！")
 
 def user_list(req):

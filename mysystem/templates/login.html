@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>主机管理系统</title>
+    <title>主机管理系统用户端_登录</title>
 
     <!-- Bootstrap -->
     <link href="/static/css/login.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <div class="container">
 	<section id="content">
 		<form  class="form-signin" role="form" action="{%url 'acc_login' %}" method="post">
-			<h2 class="form-signin-heading">用户登录</h2>
+			<h2 class="form-signin-heading">主机管理系统用户端登录</h2>
             <h3>{{error}}</h3>
 			<div>
 				<input type="text" placeholder="用户名" required="" id="username" name = "username"/>
@@ -32,7 +32,7 @@
 			<div>
 				<input type="submit" value="用户登录" /><!-- content -->
                 <a href="{%url 'registration'%}">用户注册</a>
-                <a href="{%url 'user_list'%}">管理员登录</a>
+                <a href="/admin/">管理员登录</a>
 			</div>
 		</form><!-- form -->
 	</section><!-- content -->
