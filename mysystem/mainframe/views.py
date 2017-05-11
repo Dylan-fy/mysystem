@@ -3,7 +3,9 @@ from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
+from mainframe import get_user_config, format_config
 import os
+import json
 from models import Computer
 from django.template import RequestContext
 from mainframe.models import User
@@ -26,13 +28,17 @@ def cp_update(req):
 def host_management(request):
     username = request.COOKIES.get('username', '')
     user = User.objects.get(username=username)
-    computer = Computer.objects.filter(user=user)
-    # state = Computer.objects.get(computer).state
-    # if state:
-    #     Computer.objects.filter(computer=computer).update(state=True)
-    # else:
-    #     Computer.objects.filter(computer=computer).update(state=False)
-    return render(request,'host_management.html',{'computer':computer})
+    computers = Computer.objects.filter(user=user)
+    for computer in computers:
+        # command = get_user_config(computer.computername)
+        # print command
+        # config = os.popen(command).read()
+        # print config
+        # computer.config = format_config(config)
+        config = os.popen("VBoxManage showvminfo " + str(computer.computername)).read()
+        print config
+        # computer.save()
+    return render(request,'host_management.html',{'computers':computers})
 
 def user_management(request):
     username = request.COOKIES.get('username', '')

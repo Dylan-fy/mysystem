@@ -105,7 +105,13 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': '主机管理系统管理员端',
-    'LIST_PER_PAGE': 10,
+    'ADMIN_NAME':u'主机管理系统管理员端',
+    # 'LIST_PER_PAGE': 10,
+    'MENU': (
+        'sites',
+        {'app': 'auth', 'label': u'管理员账户'},
+        'sites',
+        {'app': 'mainframe', 'label': u'主机管理'},
+    ),
 
 }
